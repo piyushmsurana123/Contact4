@@ -23,29 +23,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public static String[] web ={"Andrew", "Blenda", "Charlie", "Daniel", "Ekta", "Raju", "Zarine"};
-    public static String[] ph ={"1111111111", "2222222222", "333333333", "4444444444", "5555555555", "6666666666", "7777777777"};
-    public static Integer[] imageId ={R.drawable.male,R.drawable.female,R.drawable.male,R.drawable.male,R.drawable.female,R.drawable.male,R.drawable.female};
-
+    public static String[] web ={"Arya Stark","Barry Allen", "Caitlin Snow","Daenerys Targaryen","Felicity Smoak", "Harvey Specter", "Iris West","Jesse Pinkman","Light Yagami","Mike Ross" ,"Nick Fury","Rachel Green","Sherlock Holmes","Tyrion Lannister","Walter White"};
+    public static String[] ph ={"1111111111", "2222222222", "333333333", "4444444444", "5555555555", "6666666666", "7777777777","8888888888","9999999999","9876542310","8765432109","7654321098","6543210987","5432109876","4321098765"};
+    public static Integer[] imageId ={R.drawable.female,R.drawable.male,R.drawable.female,R.drawable.female,R.drawable.female,R.drawable.male,R.drawable.female,R.drawable.male,R.drawable.male,R.drawable.male,R.drawable.male,R.drawable.female,R.drawable.male,R.drawable.male,R.drawable.male};
+    public static String[] gen ={"Female", "Male", "Female", "Female", "Female", "Male", "Female","Male","Male","Male","Male","Female","Male","Male","Male"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
-       /* int count=1;
-        for(int i=0;name[i]!="";i++)
-        {
-            count++;
-        }
-        String[] web=new String[count];
-        String[] ph=new String[count];
-        Integer[] imageId=new Integer[count];
-        for(int i=0;i<count-1;i++)
-        {
-            web[i]=name[i];
-            ph[i]=pho[i];
-            imageId[i]=iId[i];
-        }*/
         CustomList adapter = new CustomList(MainActivity.this, web, imageId);
         ListView list = (ListView) findViewById(R.id.lv);
         list.setAdapter(adapter);
@@ -53,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-                //The next three lines cause the app to crash
-                //Main2Activity.name.setText(web[position]);
-                //Main2Activity.ph.setText(ph[position]);
-                //Main2Activity.pic.setImageResource(imageId[position]);
+                intent.putExtra("name",web[position]);
+                intent.putExtra("ph",ph[position]);
+                intent.putExtra("pic",imageId[position]);
+                intent.putExtra("gend",gen[position]);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -75,20 +62,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onStart(){
         super.onStart();
-       /* int count=1;
-        for(int i=0;name[i]!="";i++)
-        {
-            count++;
-        }
-        String[] web=new String[count];
-        String[] ph=new String[count];
-        Integer[] imageId=new Integer[count];
-        for(int i=0;i<count-1;i++)
-        {
-            web[i]=name[i];
-            ph[i]=pho[i];
-            imageId[i]=iId[i];
-        }*/
         CustomList adapter = new CustomList(MainActivity.this, web, imageId);
         ListView list = (ListView) findViewById(R.id.lv);
         list.setAdapter(adapter);
@@ -96,11 +69,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-                //The next three lines cause the app to crash
-                //Main2Activity.name.setText(web[position]);
-                //Main2Activity.ph.setText(ph[position]);
-                //Main2Activity.pic.setImageResource(imageId[position]);
+                intent.putExtra("name",web[position]);
+                intent.putExtra("ph",ph[position]);
+                intent.putExtra("pic",imageId[position]);
+                intent.putExtra("gend",gen[position]);
                 startActivity(intent);
+                finish();
             }
         });
 
